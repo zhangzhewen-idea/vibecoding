@@ -1,0 +1,56 @@
+<style>
+  #frontend-ia, #frontend-ia * { color:#000 !important; }
+  #frontend-ia .route-card { background:#fff; border:2px solid #b9afe5; border-radius:12px; padding:11px; }
+  #frontend-ia .route-card h3 { margin:0 0 6px; font-size:13px; }
+  #frontend-ia .route-card p { margin:0; font-size:10px; line-height:1.65; }
+</style>
+
+<div id="frontend-ia">
+  <h2>第三节：前端信息架构与页面职责</h2>
+  <p class="subtitle">智能紫渐变作为品牌风格，正文统一黑色；管理员拥有全部用户能力，普通用户只进入问答工作台。</p>
+
+  <div class="section" style="background:linear-gradient(135deg,#eee9ff,#e7f4ff);border:2px solid #aa9de4;border-radius:16px;padding:15px">
+    <div style="display:grid;grid-template-columns:.72fr 1.35fr 1.35fr;gap:12px">
+      <div>
+        <div class="label">PUBLIC</div>
+        <div class="route-card" style="margin-top:8px;background:#f8f6ff">
+          <h3>/login</h3>
+          <p>项目名称、紫蓝视觉背景<br>账号密码登录<br>演示账号提示</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="label">USER WORKSPACE</div>
+        <div style="display:grid;gap:8px;margin-top:8px">
+          <div class="route-card"><h3>/home</h3><p>欢迎信息、可用知识库、最近会话、快捷提问</p></div>
+          <div class="route-card"><h3>/knowledge-bases</h3><p>只展示已启用知识库；卡片查看简介并创建会话</p></div>
+          <div class="route-card" style="border-color:#7259df;background:#f4f0ff"><h3>/chat/:conversationId</h3><p>会话侧栏、流式答案、停止生成、引用角标与来源抽屉</p></div>
+          <div class="route-card"><h3>/conversations</h3><p>本人历史会话查询、重命名和删除</p></div>
+          <div class="route-card"><h3>/profile</h3><p>个人资料；暂不提供密码修改，保持 MVP 范围</p></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label">ADMIN CONSOLE</div>
+        <div style="display:grid;gap:8px;margin-top:8px">
+          <div class="route-card" style="border-color:#7259df;background:#f4f0ff"><h3>/admin/dashboard</h3><p>4 个指标卡、7 日趋势、文件类型环图、热门知识库 Top 5</p></div>
+          <div class="route-card"><h3>/admin/knowledge-bases</h3><p>新建、编辑、启停、封面、进入文档管理</p></div>
+          <div class="route-card"><h3>/admin/documents</h3><p>上传、状态进度、失败原因、重试向量化、删除</p></div>
+          <div class="route-card"><h3>/admin/users</h3><p>新增用户、分配角色、启停、重置为 123456</p></div>
+          <div class="route-card"><h3>用户问答入口</h3><p>管理员同时可访问全部 USER WORKSPACE 页面</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+    <div style="background:#f2eeff;border:2px solid #b5a8e9;border-radius:12px;padding:11px"><b>状态反馈</b><p style="font-size:10px;line-height:1.7">骨架屏、空状态、上传进度、处理状态标签、失败原因与重试按钮。</p></div>
+    <div style="background:#eef8ff;border:2px solid #abcfe7;border-radius:12px;padding:11px"><b>响应式范围</b><p style="font-size:10px;line-height:1.7">优先桌面端 1280px+；兼容平板，不专门设计移动端管理后台。</p></div>
+    <div style="background:#fff7df;border:2px solid #d8bd66;border-radius:12px;padding:11px"><b>图表实现</b><p style="font-size:10px;line-height:1.7">使用 Apache ECharts；只展示真实 SQL 聚合数据，不生成随机统计数。</p></div>
+  </div>
+
+  <div class="option" data-choice="approve-frontend-ia" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content"><h3>批准这一节</h3><p>确认路由、角色页面、交互状态、桌面端优先和 ECharts 统计范围。</p></div>
+  </div>
+</div>

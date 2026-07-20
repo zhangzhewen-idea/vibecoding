@@ -1,0 +1,61 @@
+<style>
+  #data-model, #data-model * { color:#000 !important; }
+  #data-model .entity { background:#fff; border:2px solid #aaa0d9; border-radius:12px; padding:11px; }
+  #data-model .entity h3 { margin:0 0 7px; font-size:13px; }
+  #data-model .entity p { margin:0; font-size:10px; line-height:1.65; }
+  #data-model .arrow { text-align:center; font-weight:800; font-size:17px; align-self:center; }
+</style>
+
+<div id="data-model">
+  <h2>第二节：领域模型与存储边界</h2>
+  <p class="subtitle">MySQL 保存可审计的业务事实；Redis Stack 保存向量与短期认证状态；原始文件保存在指定目录。</p>
+
+  <div class="section" style="background:#f6f3ff;border:2px solid #c5bbed;border-radius:16px;padding:15px">
+    <div class="label">MYSQL · RAG_DEMO</div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;margin-top:10px">
+      <div class="entity"><h3>sys_user</h3><p>账号、MD5 密码、昵称、状态<br>测试用户：admin / user</p></div>
+      <div class="arrow">↔</div>
+      <div class="entity"><h3>sys_user_role</h3><p>用户与角色关联<br>保持标准 RBAC 结构</p></div>
+      <div class="arrow">↔</div>
+      <div class="entity"><h3>sys_role</h3><p>ADMIN / USER<br>Flyway 初始化固定角色</p></div>
+    </div>
+
+    <div style="text-align:center;font-size:18px;font-weight:800;margin:7px 0">↓ 管理与使用</div>
+
+    <div style="display:grid;grid-template-columns:1fr auto 1.25fr;gap:8px">
+      <div class="entity"><h3>kb_knowledge_base</h3><p>名称、描述、封面、启用状态<br>创建人、文档数、问答数</p></div>
+      <div class="arrow">1 → N</div>
+      <div class="entity"><h3>kb_document</h3><p>原文件名、存储路径、MIME、大小<br>PENDING / PROCESSING / READY / FAILED<br>切片数、失败原因、重试次数</p></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1.15fr;gap:8px;margin-top:8px">
+      <div class="entity"><h3>ai_conversation</h3><p>用户、知识库、标题、状态<br>一个会话只绑定一个知识库</p></div>
+      <div class="arrow">1 → N</div>
+      <div class="entity"><h3>ai_message</h3><p>USER / ASSISTANT<br>内容、Token 用量、耗时</p></div>
+      <div class="arrow">1 → N</div>
+      <div class="entity"><h3>ai_message_reference</h3><p>文件、切片编号、相似度<br>页码 / Markdown 标题、引用摘要</p></div>
+    </div>
+  </div>
+
+  <div class="section" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="background:#eee9ff;border:2px solid #b2a4e8;border-radius:14px;padding:13px">
+      <div class="label">REDIS STACK · LOCALHOST:6380</div>
+      <h3>向量与短期状态</h3>
+      <p style="font-size:11px;line-height:1.8">HNSW 索引保存切片文本、1024 维向量和元数据：<code>knowledgeBaseId</code>、<code>documentId</code>、<code>chunkIndex</code>、<code>pageNumber</code>、<code>sectionTitle</code>、<code>sourceName</code>。同时保存 Refresh Token、JWT 退出标记和轻量缓存。</p>
+    </div>
+    <div style="background:#e9f8fa;border:2px solid #99cdd4;border-radius:14px;padding:13px">
+      <div class="label">LOCAL FILE SYSTEM</div>
+      <h3>原始文件</h3>
+      <p style="font-size:11px;line-height:1.8"><code>/Users/zhangzhewen/data/ragdemo/uploads/{knowledgeBaseId}/{uuid}.{ext}</code>。数据库只保存路径和元数据，不保存 BLOB；文件名使用 UUID，原始名称单独记录，避免重名和路径穿越。</p>
+    </div>
+  </div>
+
+  <div class="section" style="background:#fff7dd;border:2px solid #d9bd64;border-radius:12px;padding:11px;font-size:11px">
+    <b>一致性规则：</b>向量化成功后文档才进入 READY；失败记录原因并允许管理员重试。删除文档时先删除 Redis 切片，再删除物理文件，最后将 MySQL 文档记录逻辑删除；任何一步失败都保留可重试状态。
+  </div>
+
+  <div class="option" data-choice="approve-data-model" onclick="toggleSelect(this)">
+    <div class="letter">✓</div>
+    <div class="content"><h3>批准这一节</h3><p>确认实体关系、MySQL / Redis / 文件系统的职责，以及删除一致性规则。</p></div>
+  </div>
+</div>

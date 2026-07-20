@@ -1,0 +1,62 @@
+<h2>选择系统的视觉方向</h2>
+<p class="subtitle">三种方案都适用于“张喆闻 RAG企业知识库问答系统”，请重点比较信息密度、专业感和学习友好度。</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f5f7fb;padding:18px;color:#23304a">
+      <div style="display:flex;gap:12px;height:220px">
+        <div style="width:72px;background:#18233b;border-radius:12px;color:#fff;padding:12px 8px">
+          <div style="font-weight:700;margin-bottom:20px">ZR</div>
+          <div style="font-size:11px;line-height:2.5;opacity:.85">首页<br>知识库<br>问答<br>用户</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:11px;color:#70809e;margin-bottom:8px">企业知识中枢</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div style="background:#fff;border-radius:10px;padding:10px"><b>12</b><br><small>知识库</small></div>
+            <div style="background:#fff;border-radius:10px;padding:10px"><b>368</b><br><small>文档</small></div>
+            <div style="background:#fff;border-radius:10px;padding:10px"><b>1,842</b><br><small>问答</small></div>
+          </div>
+          <div style="height:95px;background:#fff;border-radius:10px;margin-top:9px;padding:10px">
+            <div style="font-size:11px">问答趋势</div>
+            <svg width="100%" height="65" viewBox="0 0 220 65"><polyline points="0,52 35,41 70,46 105,20 140,29 175,10 220,18" fill="none" stroke="#4b70e2" stroke-width="3"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A · 现代企业蓝（推荐）</h3>
+      <p>深蓝侧栏、浅灰画布、白色数据卡片。稳重但不古板，后台与聊天页面风格统一。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#f2f0ff,#e8f8ff);padding:18px;color:#29234d">
+      <div style="height:220px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:18px;padding:14px;box-shadow:0 12px 35px rgba(90,70,160,.13)">
+        <div style="display:flex;justify-content:space-between;align-items:center"><b>知识问答</b><span style="background:#eee9ff;color:#7056d8;border-radius:12px;padding:4px 9px;font-size:10px">人事制度库</span></div>
+        <div style="margin-top:18px;text-align:right"><span style="background:#7259df;color:#fff;padding:8px 12px;border-radius:14px 14px 3px 14px;font-size:11px">年假可以跨年使用吗？</span></div>
+        <div style="margin-top:16px;background:#fff;padding:11px;border-radius:4px 14px 14px 14px;font-size:11px;line-height:1.6">根据《员工休假管理办法》，年假原则上应在当年度使用……<br><span style="color:#7259df">引用 2 个知识片段</span></div>
+        <div style="margin-top:20px;background:#fff;border-radius:12px;padding:9px;color:#999;font-size:11px">继续询问企业知识…　　<span style="float:right;color:#7259df">发送</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B · 智能紫渐变</h3>
+      <p>紫蓝渐变、玻璃卡片与圆润气泡，AI 感更强；视觉突出，但后台长时间使用略显花哨。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f7f4ed;padding:18px;color:#24332d">
+      <div style="height:220px;border:1px solid #dcd5c8;background:#fffdf8;border-radius:8px;padding:14px">
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #e6e0d5;padding-bottom:10px"><b>Knowledge Desk</b><span style="font-size:10px">张喆闻 RAG</span></div>
+        <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin-top:12px">
+          <div><div style="font-size:20px;font-family:serif;margin-bottom:8px">让知识有据可循</div><div style="font-size:10px;line-height:1.7;color:#637169">从企业文档中检索可靠答案，并保留每一条引用来源。</div><button style="margin-top:14px;background:#1e5945;color:white;border:0;border-radius:4px;padding:7px 12px;font-size:10px">开始提问</button></div>
+          <div style="background:#e8eee9;border-radius:6px;padding:10px;font-size:10px;line-height:2">知识库　12<br>可用文档　356<br>今日问答　128<br>命中率　87%</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C · 编辑部绿</h3>
+      <p>米白底色、墨绿强调、细线边框与编辑式排版。知识感强且独特，但不如常规后台熟悉。</p>
+    </div>
+  </div>
+</div>
